@@ -1,4 +1,5 @@
 import { WORDS } from "./words.js";
+//import { WORDS } from "./guess.js";
 
 const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
@@ -118,7 +119,10 @@ function checkGuess () {
         if (guessesRemaining === 0) {
             toastr.error("You've run out of guesses! Game over!")
             toastr.info(`The right word was: "${rightGuessString}"`)
+        }else{
+            toastr.info(`There are "${rightGuess.length}" possible words remaining`)
         }
+
     }
 }
 
@@ -169,7 +173,7 @@ document.addEventListener("keyup", (e) => {
         return
     }
 
-    if (pressedKey === "Enter") {
+    if (pressedKey === "GUESS") {
         checkGuess()
         return
     }
@@ -190,7 +194,7 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     }
     let key = target.textContent
 
-    if (key === "Del") {
+    if (key === "←") {
         key = "Backspace"
     } 
 
